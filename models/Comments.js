@@ -12,14 +12,6 @@ const commentSchema = new mongoose.Schema(
             type: String, 
             required: true
         },
-        upvote:{
-            type:Number,
-            default: 0, 
-        },
-        downvote:{
-           type:Number,
-           default: 0, 
-        },
         answer: {
              type:mongoose.Schema.Types.ObjectId, 
             ref:"Answer"

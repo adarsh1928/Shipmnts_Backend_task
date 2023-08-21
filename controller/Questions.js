@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Questions = require("../models/Questions");
+const User = require("../models/User");
 
 exports.addQuestion = async (req, res) => {
     try {
@@ -11,11 +12,11 @@ exports.addQuestion = async (req, res) => {
                 message: "All fields are required"
             });
         }
-        const existing=await Questions.findOne({email});
+        const existing=await User.findOne({email});
 
-        if(existing){
+        if(!existing){
            return res.status(200).json({
-                message:"You are already in our request",
+                message:"You are Not in login",
                 // existing
             })
         }
@@ -49,13 +50,13 @@ exports.editQuestion = async (req, res) => {
         });
       }
   
-      const Questionss = await Questions.findById(QuestionID);
-  
-      if (!Questionss) {
-        return res.status(404).json({
-          message: "Question Experience not found",
-          success: false,
-        });
+      const existing=await User.findOne({email});
+
+      if(!existing){
+         return res.status(200).json({
+              message:"You are Not in login",
+              // existing
+          })
       }
   
       Questionss.questions = Content;
@@ -87,6 +88,14 @@ exports.deleteQuestion=async (req,res)=>{
             message:"Email Required For delete Question ",
             success:false,
         })
+       }
+       const existing=await User.findOne({email});
+
+       if(!existing){
+          return res.status(200).json({
+               message:"You are Not in login",
+               // existing
+           })
        }
      
        const DeleteQuestion=await Questions.findByIdAndDelete(
