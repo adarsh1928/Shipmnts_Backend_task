@@ -21,7 +21,7 @@ exports.addQuestion = async (req, res) => {
         }
         const QuestionsDetail = new Questions({
             email,
-            questions,
+            questions:Question,
         });
 
         await QuestionsDetail.save();
@@ -40,11 +40,11 @@ exports.addQuestion = async (req, res) => {
 
 exports.editQuestion = async (req, res) => {
     try {
-      const { email, QuestionID ,Question} = req.body;
+      const { email, QuestionID ,Content} = req.body;
   
-      if (!email || !QuestionID || !Question) {
+      if (!email || !QuestionID || !Content) {
         return res.status(400).json({
-          message: "Email, Question and QuestionID required",
+          message: "Email, Content and QuestionID required",
           success: false,
         });
       }
@@ -58,7 +58,7 @@ exports.editQuestion = async (req, res) => {
         });
       }
   
-      Questionss.questions = Question;
+      Questionss.questions = Content;
    
 
       await Questionss.save();
@@ -89,15 +89,15 @@ exports.deleteQuestion=async (req,res)=>{
         })
        }
      
-       const myQuestionExp=await Questions.findByIdAndDelete(
+       const DeleteQuestion=await Questions.findByIdAndDelete(
           QuestionID,
        )
      
        
-    await myQuestionExp.save()
+    await DeleteQuestion.save()
        return res.status(200).json({
         message:"succesfully delete question data",
-        myQuestionExp,
+        DeleteQuestion,
         success:true,
        })
      }catch(err){
@@ -119,13 +119,13 @@ exports.getQuestions=async (req,res)=>{
        })
       }
     
-      const myQuestionExp=await Questions.find(
+      const getAllQuestions=await Questions.find(
        {email:email}
       )
 
       return res.status(200).json({
-       message:"succesfully Got my intern exp data",
-       myQuestionExp,
+       message:"succesfully Got all questions",
+       getAllQuestions,
        success:true,
       })
     }catch(err){

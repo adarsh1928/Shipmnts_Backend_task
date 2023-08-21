@@ -9,7 +9,6 @@ require("dotenv").config();
 
 exports.signup = async (req, res) => {
 	try {
-		// Destructure fields from the request body
 		
 		const {
 			firstName,
@@ -50,8 +49,6 @@ exports.signup = async (req, res) => {
 			});
 		}
 
-
-		// Hash the password
 		const hashedPassword = await bcrypt.hash(password, 10);
 		
 		const user = await User.create({

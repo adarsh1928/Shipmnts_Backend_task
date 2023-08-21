@@ -3,7 +3,7 @@ const Questions = require("../models/Questions");
 
 
 
-exports.Upvote = async (req, res) => {
+exports.UpvoteQuestion = async (req, res) => {
     try {
       const { email, QuestionID } = req.body;
   
@@ -42,7 +42,7 @@ exports.Upvote = async (req, res) => {
     }
   };
   
-exports.DownVote = async (req, res) => {
+exports.DownVoteQuestion = async (req, res) => {
     try {
       const { email, QuestionID } = req.body;
   
@@ -81,7 +81,7 @@ exports.DownVote = async (req, res) => {
     }
   };
   
-  exports.Upvote = async (req, res) => {
+  exports.UpvoteAnswer = async (req, res) => {
     try {
       const { email, AnswerID } = req.body;
   
@@ -120,7 +120,7 @@ exports.DownVote = async (req, res) => {
     }
   };
   
-exports.DownVote = async (req, res) => {
+exports.DownVoteAnswer = async (req, res) => {
     try {
       const { email, AnswerID } = req.body;
   
