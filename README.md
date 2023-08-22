@@ -1,6 +1,6 @@
-I had completed the Task 1 of backend which is stackoverflow backend
 
-#  Backend Task of Shipmnts By Adarsh Patel
+
+#  Backend of stackoverflow
 
 
 This is the backend component of a StackOverflow clone project. It provides a RESTful API to manage users, questions, answers, and other related features.
